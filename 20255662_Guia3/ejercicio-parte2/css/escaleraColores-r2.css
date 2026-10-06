@@ -1,0 +1,19 @@
+/* resultado 2*/
+
+#diez_de_diamantes,
+#sota_de_diamantes,
+#reina_de_diamantes,
+#rey_de_diamantes,
+#as_de_diamantes {
+    position: absolute;
+}
+ 
+#diez_de_diamantes  { top: 100px; left: 80px;  z-index: 5; }
+#sota_de_diamantes  { top: 112px; left: 92px;  z-index: 4; }
+#reina_de_diamantes { top: 124px; left: 104px; z-index: 3; }
+#rey_de_diamantes   { top: 136px; left: 116px; z-index: 2; }
+#as_de_diamantes    { top: 148px; left: 128px; z-index: 1; }
+ 
+img {
+    display: block;
+}

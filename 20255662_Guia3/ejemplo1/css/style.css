@@ -1,0 +1,372 @@
+:root {
+    --color-texto: #342e29;
+    --color-fondo: #f5efe6;
+    --color-principal: #293e36;
+    --color-acento: #93472f;
+    --color-superficie: #ffffff;
+    --color-contraste: #ead1ad;
+    --color-borde: #ded3c4;
+    --color-fondo-secundario: #eadfce;
+    --color-capa-inicial: rgba(25, 35, 29, 0.85);
+    --color-capa-final: rgba(25, 35, 29, 0.65);
+    --color-sombra: rgba(52, 46, 41, 0.10);
+}
+
+hmtl {
+    scroll-padding-top: 5rem;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+h2, h3 {
+    color: var(--color-principal);
+}
+
+a {
+    color: var(--color-acento);
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--color-principal);
+}
+
+.encabezado-principal {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    color: var(--color-superficie);
+    background-color: var(--color-principal);
+}
+
+.barra-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    padding: 1rem 0;
+}
+
+.marca {
+    color: var(--color-superficie);
+    font-size: 1.15rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu a {
+    color: var(--color-superficie);
+    text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+    color: var(--color-contraste);
+}
+
+.presentacion {
+    padding: 4rem 0;
+    color: var(--color-superficie);
+    background-color: var(--color-principal);
+    background-image:
+    linear-gradient(
+        to right,
+        var(--color-capa-inicial),
+        var(--color-capa-final)
+        ),
+        url("../images/gran-muralla-china.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.presentacion h1 {
+    max-width: 760px;
+    margin: 0 0 1rem;
+    font-size: 2.5rem;
+}
+
+.presentacion p {
+    max-width: 640px;
+}
+
+.sobretitulo {
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--color-acento);
+}
+ 
+.presentacion .sobretitulo {
+    color: var(--color-contraste);
+}
+
+.boton-principal {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.25rem;
+    color: var(--color-superficie);
+    background-color: var(--color-acento);
+    border-radius: 0.3rem;
+    text-decoration: none;
+}
+ 
+.boton-principal:hover,
+.boton-principal:focus-visible {
+    color: var(--color-principal);
+    background-color: var(--color-contraste);
+}
+
+.seccion-maravillas {
+    padding: 3rem 0;
+}
+ 
+.titulo-seccion {
+    max-width: 680px;
+    margin-bottom: 2rem;
+}
+ 
+.titulo-seccion h2 {
+    margin: 0 0 0.75rem;
+    font-size: 2rem;
+}
+
+.maravillas {
+    display: flex;
+    flex-wrap:  wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* 16. Active Flexbox sin completar la distribución.
+a) ¿Cuántas filas intenta formar Flexbox?
+R/ Solo una. Sin el flex-wrap, flexbox intentaria mantener todos los elemenos en solo una línea.
+b) ¿Qué ocurre con el ancho de las tarjetas?
+R/ Las tarjetas se hacen máss pequeñas para que quepan 7 en la fila, así no quedan muy pegadas.
+c) ¿El contenido permanece cómodo de leer?
+R/ No. El texxto queda muy unido, sin poder leeerse bien y las fotos son diminutas.
+*/
+
+.maravilla {
+    display: flex;
+    flex-direction:  column;
+    flex: 1 1 300px;
+    max-width: 360px;
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px var(--color-sombra);
+    overflow: hidden;
+}
+
+/* 19. Explique la diferencia entre el espacio
+creado por gap y el relleno interior que posteriormente 
+se aplicará a cada tarjeta. 
+R/ El gap es el espacio entre tarjetas. Los demás sobre el espacio lo define el contenedor
+y no agrega espacio en los bordes externos. En cambio, el padding es el espacio dentro de 
+una tarjeta, entre su borde y su contenido.
+*/
+
+/* Observe el crecimiento de la última tarjeta. Amplíe la ventana hasta que la última fila quede
+incompleta. Observe el ancho de la última tarjeta.
+a) ¿Por qué crece más que las tarjetas de una fila completa?
+R/ Porque el flex-grow reparte el espacio libre de cada fila entre sus elementos. Como la última
+fila tiene una sola tarjeta, recibe todo ese espacio.
+b) ¿Qué valor de flex permite ese crecimiento?
+R/ El primer valor de flex: 1 1 300px.
+c) ¿Resulta visualmente conveniente que ocupe todo el espacio?
+R/ Que el max-width se doloque en 360px y el justify-content centrado en .maravillas.
+*/
+
+/* 22. Explique por qué ahora se respetan las esquinas redondeadas. 
+R/ Las fotos tienen esquinas rectas. El overflow: hidden recorta todo lo que sale de la caja, así 
+que las esquinas de las fotos siguen el border-radius que se colocado en la tarjeta.
+*/
+
+.maravilla img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* 23. Preste especial atención a Petra.
+a) ¿Mantienen su proporción?
+R/ No. Con width al 100% y height con 220 px fijos, la imagen se estira y se llega a deformar.
+b) ¿Qué diferencia se observa entre la fotografía vertical y las horizontales? 
+R/ Petra es vertical, por lo que se ve estirada. Los horizontales casi no se distorsionan porque
+su proporción se parece al área.
+*/ 
+
+/* 24. Explique qué parte del contenido puede perderse al
+utilizar este valor.
+R/  Porque cover llena toda el área sin que se deforme la foto, pero la recorta. 
+*/
+
+.maravilla-imagen {
+    position: relative;
+}
+
+/* 26. Explique qué espacio absorbe el margen automático. 
+R/ Absorbe todo el espacio vertical, especificamente el que queda entre el texto y el enlace. Eso empuja
+el enlace hasta el fondo y los enlaces de una misma fila queda alineados.
+*/
+
+/* 29. Visualice los cambios.
+a) ¿Qué ocurrió con las demás tarjetas?
+R/ Las demás tarjetas se reacomodan y ocupan el espacio.
+b) ¿Continúa reservado el espacio original de Petra?
+R/ No, el elemento sale del flujo y deja de reservar espacio.
+c) ¿Respecto de qué área parecen calcularse top y left?
+R/ Respecto a la esquina superior izquierda de la página, porque no hay antecesor posicionado.
+*/
+
+/* 30. Visualice la página.
+a) ¿Desde dónde se calculan ahora top y left?
+R/ Con top y left se calculan desde la esquina superior izquierda de .maravillas.
+b) ¿Por qué se modificó la referencia si el contenedor no fue desplazado?
+R/ Porque un elemento con posición relativa cuenta como antecesor posicionado. 
+*/
+
+/* 31. Compare relativo y absoluto. A partir de lo observado, responda:
+a) ¿Cuál de los dos tipos de posicionamiento conserva el espacio original del elemento?
+R/ El relativo conserva el espacio original.
+b) ¿Cuál permite que las demás cajas ocupen ese espacio?
+R/ El absoluto permite que las demás cajas ocupen ese espacio.
+c) ¿Cómo se determina el sistema de referencia de un elemento absoluto?
+R/ El que tenga postion diferente de static.
+*/
+
+.continente {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+    padding: 0.25rem 0.75rem;
+    color: var(--color-superficie);
+    background-color: var(--color-acento);
+    border-radius: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* 35.  Agregue al encabezado: position: sticky; Desplace la página.
+a) ¿Permanece adherido el encabezado?
+R/ No se queda pegado.
+b) ¿Qué información falta para indicar el punto de adhesión? 
+R/ Falta una coordenada (por ej: top:0), indicando a qué distancia del botde deberia de 
+quedar pegado.
+*/
+
+
+/* 37. Explique por qué el encabezado necesita un valor superior al utilizado en las etiquetas.
+R/ El encabezado necesita un valor mayor que el de las etiquetas para quedar por encima
+*/
+
+
+.maravilla-contenido {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.25rem;
+}
+ 
+.ubicacion {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--color-acento);
+}
+
+.maravilla-contenido h3 {
+    margin: 0.25rem 0 0.75rem;
+    font-size: 1.35rem;
+}
+ 
+.maravilla-contenido a {
+    margin-top: auto;      
+    align-self: flex-start; 
+    font-weight: bold;
+}
+
+.volver-arriba {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    color: var(--color-superficie);
+    background-color: var(--color-acento);
+    border: 2px solid var(--color-superficie);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+/* 38. Desplace la página y compare el botón con el encabezado.
+a) ¿Cuál conserva su espacio original?
+R/ El encabezado sticky conserva su espacio en el flujo. En cambio, el bttón fixed
+sale del flujo.
+b) ¿Cuál permanece ubicado respecto de la ventana desde el inicio? 
+R/ Fixed queda ubicado respecto de la ventana desde el inicio.
+*/
+
+.volver-arriba:hover,
+.volver-arriba:focus-visible {
+    color: var(--color-superficie);
+}
+ 
+.seccion-historia {
+    padding: 3rem 0;
+    background-color: var(--color-fondo-secundario);
+}
+ 
+.historia-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+ 
+.historia-contenido > * {
+    flex: 1 1 300px;
+}
+ 
+.pie-pagina {
+    padding: 2rem 0 5rem;
+    color: var(--color-superficie);
+    background-color: var(--color-principal);
+}

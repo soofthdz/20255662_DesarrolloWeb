@@ -1,0 +1,499 @@
+/* ============================================================
+   BIGGEST · Página de Inicio
+   Distribución principal construida con CSS GRID.
+   Flexbox se usa solo en componentes internos (nav, botones).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Mono:wght@400&display=swap');
+
+:root {
+  --color-brick-red: #e82c2a;
+  --color-press-black: #212529;
+  --color-cream-white: #ffffff;
+  --color-soft-grey: #f2f2f2;
+  --color-carbon: #121212;
+
+  --font-surt: 'Helvetica Neue', Arial, sans-serif;
+  --font-editorial: 'DM Serif Display', Georgia, serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --radius-md: 3.75px;
+  --radius-cards: 25px;
+  --radius-images: 25px;
+  --radius-buttons: 50px;
+
+  --content-width: 1440px;
+  --section-gap: 70px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--color-cream-white);
+  color: var(--color-press-black);
+  font-family: var(--font-surt);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Tipografía reutilizable ---------- */
+.eyebrow,
+.card-label {
+  display: block;
+  color: var(--color-brick-red);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.eyebrow.light { color: #ffffff; }
+
+h1, h2, h3, p { margin-top: 0; }
+
+/* ---------- Botones ---------- */
+.solid-button,
+.outline-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  letter-spacing: .013em;
+  transition: background-color .25s ease, color .25s ease, transform .25s ease;
+  cursor: pointer;
+}
+.solid-button {
+  background: var(--color-brick-red);
+  color: #ffffff;
+  border: 1px solid var(--color-brick-red);
+}
+.solid-button:hover {
+  background: #b91e1c;
+  transform: translateY(-2px);
+}
+.outline-button {
+  border: 1px solid var(--color-brick-red);
+  color: var(--color-brick-red);
+  background: transparent;
+}
+.outline-button:hover {
+  background: var(--color-brick-red);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+.outline-button.light {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+.outline-button.light:hover {
+  background: #ffffff;
+  color: var(--color-brick-red);
+}
+
+/* ============================================================
+   ANUNCIO SUPERIOR
+   ============================================================ */
+.announcement {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 20px;
+  background: var(--color-brick-red);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   HEADER (Flexbox interno: logo + nav en línea)
+   ============================================================ */
+.site-header {
+  display: flex;                 /* Flexbox: componente interno del header */
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--color-brick-red);
+  background: var(--color-cream-white);
+}
+.brand { width: 150px; display: inline-flex; align-items: center; }
+.brand img { object-fit: contain; }
+
+.main-nav {
+  display: flex;                 /* Flexbox: barra de navegación */
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  color: var(--color-brick-red);
+  font-size: 15px;
+  letter-spacing: .013em;
+}
+.main-nav a { transition: opacity .25s ease; }
+.main-nav a:hover,
+.main-nav a.active { opacity: .62; }
+
+.main-nav .nav-order {
+  padding: 9px 17px;
+  border: 1px solid var(--color-brick-red);
+  border-radius: var(--radius-buttons);
+}
+
+/* ============================================================
+   ESTRUCTURA GENERAL DE SECCIONES
+   Todas las secciones comparten ancho máximo y padding lateral.
+   ============================================================ */
+main > section {
+  width: min(100%, var(--content-width));
+  margin-inline: auto;
+  padding: var(--section-gap) 40px;
+}
+
+/* ============================================================
+   HERO  →  CSS GRID (distribución principal)
+   grid-template-columns: dos columnas (texto | imagen)
+   ============================================================ */
+.hero {
+  display: grid;                               /* ← GRID principal */
+  grid-template-columns: 1fr 1fr;              /* 2 columnas */
+  gap: 50px;
+  align-items: center;
+}
+
+.hero-copy h1 {
+  margin: 16px 0 25px;
+  color: var(--color-brick-red);
+  font-family: var(--font-editorial);
+  font-size: clamp(34px, 6vw, 105px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.02em;
+}
+.hero-copy p {
+  max-width: 500px;
+  margin-bottom: 30px;
+  font-size: clamp(15px, 1.4vw, 20px);;
+  line-height: 1.35;
+}
+.hero-actions {
+  display: flex;                 /* Flexbox: fila de botones */
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.image-panel {
+  min-height: 460px;
+  overflow: hidden;
+  border-radius: var(--radius-images);
+  background: var(--color-soft-grey);
+}
+.hero-image img {
+  transition: transform .55s ease;
+}
+.hero-image:hover img { transform: scale(1.04); }
+
+/* ============================================================
+   INTRO (centrado, texto editorial)
+   ============================================================ */
+.intro {
+  max-width: 900px !important;
+  text-align: center;
+}
+.intro h2 {
+  margin: 14px 0 18px;
+  color: var(--color-press-black);
+  font-family: var(--font-editorial);
+  font-size: clamp(34px, 4vw, 56px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+.intro p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #4a4a4a;
+}
+
+/* ============================================================
+   ENCABEZADO DE SECCIÓN
+   ============================================================ */
+.section-heading {
+  display: flex;                 /* Flexbox: título + enlace */
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 12px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--color-brick-red);
+  color: var(--color-brick-red);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.section-heading a { transition: opacity .25s ease; }
+.section-heading a:hover { opacity: .6; }
+
+/* ============================================================
+   FEATURES  →  CSS GRID (2 columnas)
+   ============================================================ */
+.feature-grid {
+  display: grid;                              /* ← GRID */
+  grid-template-columns: repeat(2, 1fr);      /* 2 columnas iguales */
+  gap: 25px;
+}
+
+.feature-card {
+  display: grid;                              /* ← GRID interno */
+  grid-template-rows: 320px 1fr;              /* imagen fija + cuerpo flexible */
+  background: var(--color-soft-grey);
+  border-radius: var(--radius-cards);
+  overflow: hidden;
+  transition: transform .3s ease;
+}
+.feature-card:hover { transform: translateY(-4px); }
+.feature-card img { transition: transform .55s ease; }
+.feature-card:hover img { transform: scale(1.035); }
+
+.feature-body { padding: 30px; }
+.feature-body h3 {
+  margin: 10px 0 15px;
+  font-family: var(--font-editorial);
+  font-size: clamp(30px, 3vw, 44px);
+  font-weight: 400;
+  line-height: 1;
+}
+.feature-body p { max-width: 480px; margin-bottom: 20px; font-size: 16px; }
+
+.text-link {
+  color: var(--color-brick-red);
+  font-size: 15px;
+  transition: opacity .25s ease;
+}
+.text-link:hover { opacity: .6; }
+
+/* ============================================================
+   FRANJA ROJA  →  CSS GRID (2 columnas)
+   ============================================================ */
+.red-band {
+  display: grid;                              /* ← GRID */
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  background: var(--color-brick-red);
+  color: #ffffff;
+  /* Se sale del contenedor central para ocupar todo el ancho */
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: var(--section-gap) max(40px, calc((100vw - var(--content-width)) / 2 + 40px)) !important;
+}
+.red-band h2 {
+  margin: 12px 0 0;
+  font-family: var(--font-editorial);
+  font-size: clamp(55px, 7vw, 95px);
+  font-weight: 400;
+  line-height: .98;
+}
+.red-band p {
+  max-width: 480px;
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   LOCATIONS PREVIEW  →  CSS GRID (imagen | texto)
+   ============================================================ */
+.location-feature {
+  display: grid;                              /* ← GRID */
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.location-copy h2 {
+  margin: 10px 0 15px;
+  font-family: var(--font-editorial);
+  font-size: clamp(38px, 4vw, 60px);
+  font-weight: 400;
+  line-height: 1;
+}
+.location-copy p { max-width: 480px; margin-bottom: 22px; font-size: 17px; }
+
+/* ============================================================
+   CTA FINAL  →  CSS GRID (una columna, contenido centrado)
+   ============================================================ */
+.cta-final {
+  display: grid;                              /* ← GRID */
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  gap: 20px;
+  background: var(--color-carbon);
+  color: #ffffff;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: var(--section-gap) 40px !important;
+  border-radius: 0;
+}
+.cta-final h2 {
+  margin: 0;
+  color: var(--color-brick-red);
+  font-family: var(--font-editorial);
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 400;
+  line-height: 1;
+}
+.cta-final p {
+  max-width: 560px;
+  font-size: 18px;
+  color: #f2f2f2;
+}
+.cta-actions {
+  display: flex;                 /* Flexbox: fila de botones */
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cta-final .solid-button {
+  background: var(--color-brick-red);
+  border-color: var(--color-brick-red);
+  color: #ffffff;
+}
+.cta-final .solid-button:hover { background: #b91e1c; }
+
+/* ============================================================
+   FOOTER  →  CSS GRID (3 columnas)
+   ============================================================ */
+.site-footer {
+  display: grid;                              /* ← GRID */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  align-items: center;
+  padding: 50px 40px;
+  background: var(--color-carbon);
+  color: #ffffff;
+  border-top: 1px solid var(--color-brick-red);
+}
+.footer-brand {
+  color: var(--color-brick-red);
+  font-family: var(--font-editorial);
+  font-size: 55px;
+  line-height: 1;
+}
+.footer-info span {
+  color: var(--color-brick-red);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+.footer-info p { margin: 7px 0 0; font-size: 13px; }
+.footer-nav {
+  display: flex;                 /* Flexbox: enlaces del footer */
+  justify-content: flex-end;
+  gap: 25px;
+  color: var(--color-brick-red);
+  font-size: 14px;
+}
+.footer-nav a { transition: opacity .25s ease; }
+.footer-nav a:hover { opacity: .6; }
+
+/* ============================================================
+   RESPONSIVE  →  Grids se reducen a una sola columna
+   ============================================================ */
+@media (max-width: 1000px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .main-nav { justify-content: flex-start; gap: 18px; }
+
+  /* Grids → 1 columna */
+  .hero,
+  .feature-grid,
+  .red-band,
+  .location-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .hero { min-height: auto; }
+  .hero-copy { padding: 0; }
+  .hero-copy h1 { font-size: clamp(40px, 8vw, 70px); }
+  .image-panel { min-height: 320px; }
+  .feature-card { grid-template-rows: 260px 1fr; }
+
+  .site-footer { grid-template-columns: 1fr; }
+  .footer-nav { justify-content: flex-start; }
+}
+
+@media (max-width: 760px) {
+  main > section { padding: 55px 24px; }
+
+  .announcement { 
+    text-align: center; 
+    font-size: 9px; 
+    padding: 8px 12px;
+    line-height: 1.3;
+  }
+
+  .brand { width: 125px; }
+  .main-nav { 
+    width: 100%;
+    gap: 12px 18px;
+    font-size: 14px;
+  }
+  .main-nav .nav-order { padding: 8px 14px; }
+
+  .hero-copy h1 { font-size: clamp(36px, 9vw, 60px); }
+  .hero-copy p,
+  .red-band p,
+  .cta-final p { font-size: 16px; }
+
+  .image-panel { min-height: 260px; }
+  .feature-card { grid-template-rows: 220px 1fr; }
+  .feature-body { padding: 22px; }
+  .feature-body h3 { font-size: clamp(26px, 5vw, 36px); }
+
+  .red-band,
+  .cta-final {
+    padding: 55px 24px !important;
+  }
+
+  .site-footer { padding: 40px 24px; }
+  .footer-brand { font-size: 42px; }
+  .footer-nav { flex-wrap: wrap; gap: 16px; }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  main > section {
+    padding: 45px 18px;
+  }
+
+  .hero-copy h1 { font-size: clamp(32px, 10vw, 48px); }
+  .hero-actions,
+  .cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-actions a,
+  .cta-actions a {
+    width: 100%;
+    text-align: center;
+  }
+}
