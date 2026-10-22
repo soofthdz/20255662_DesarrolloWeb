@@ -1,0 +1,33 @@
+:root {
+    --fondo-claro: #f7f4ef;
+    --fondo-cafe: #540b0e;
+}
+body {
+    background-color: var(--fondo-claro);
+    color: #241715;
+}
+
+.encabezado {
+    background-color: var(--fondo-cafe);
+}
+
+.boton-cafeteria {
+    background-color: var(--fondo-cafe);
+    color: white;
+    border: 1px solid var(--fondo-cafe);
+}
+
+.boton-cafeteria:hover {
+    background-color: #9e2a2b;
+    color: white;
+}
+
+.card {
+    border: 0;
+    border-radius: 12px;
+}
+
+.resumen {
+    background-color: #f9eae1;
+    border-radius: 8px;
+}
