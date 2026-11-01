@@ -1,0 +1,113 @@
+:root {
+    --salvia: #CBD3AB;
+    --verde-claro: #E7EDCA;
+    --crema: #FFF9E0;
+    --durazno: #F9EBCB;
+    --terracota: #D0A074;
+    --texto: #4A4A38;
+    --texto-suave: #8A8A6E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--crema);
+    color: var(--texto);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+}
+
+.portada {
+    width: 100%;
+    max-width: 560px;
+}
+
+.carnet {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracota);
+    margin-bottom: 14px;
+}
+
+h1 {
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.subtitulo {
+    color: var(--texto-suave);
+    margin-bottom: 44px;
+}
+
+ul {
+    list-style: none;
+    border-top: 1px solid var(--salvia);
+}
+
+li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 12px;
+    text-decoration: none;
+    color: var(--texto);
+    border-bottom: 1px solid var(--salvia);
+    transition: background .25s ease, padding-left .25s ease;
+}
+
+li a .izq {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+}
+
+li a .num {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--terracota);
+    min-width: 24px;
+}
+
+li a .nombre {
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+li a .flecha {
+    color: var(--terracota);
+    font-size: 1.2rem;
+    transition: transform .25s ease;
+}
+
+li a:hover {
+    background: var(--verde-claro);
+    padding-left: 20px;
+}
+
+li a:hover .flecha {
+    transform: translateX(6px);
+}
+
+li a:focus-visible {
+    outline: 2px solid var(--terracota);
+    outline-offset: -2px;
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+}
