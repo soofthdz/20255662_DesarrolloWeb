@@ -30,6 +30,10 @@ body {
     max-width: 560px;
 }
 
+.portada.ancha {
+    max-width: 680px;
+}
+
 .carnet {
     font-size: 0.85rem;
     font-weight: 500;
@@ -52,6 +56,39 @@ h1 {
     margin-bottom: 44px;
 }
 
+/* ---------- Títulos de sección ---------- */
+h2 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracota);
+    margin-top: 40px;
+    margin-bottom: 4px;
+}
+
+h1 + h2,
+.subtitulo + h2,
+.seccion h2 {
+    margin-top: 0;
+}
+
+h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--texto);
+    margin: 18px 0 10px;
+}
+
+ul + h3 {
+    margin-top: 28px;
+}
+
+.seccion {
+    margin-bottom: 40px;
+}
+
+/* ---------- Lista de enlaces ---------- */
 ul {
     list-style: none;
     border-top: 1px solid var(--salvia);
@@ -104,6 +141,28 @@ li a:hover .flecha {
 li a:focus-visible {
     outline: 2px solid var(--terracota);
     outline-offset: -2px;
+}
+
+/* ---------- Enlace de volver ---------- */
+.volver,
+.portada p a,
+.seccion + a {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+    text-decoration: none;
+    transition: color .25s ease;
+}
+
+.volver:hover,
+.portada p a:hover,
+.seccion + a:hover {
+    color: var(--terracota);
+}
+
+ul + p,
+.seccion + p {
+    margin-top: 32px;
 }
 
 footer {
