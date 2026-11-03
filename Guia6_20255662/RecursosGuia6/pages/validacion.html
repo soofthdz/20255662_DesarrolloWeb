@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/stylesFunciones.css" rel="stylesheet" />
+    <link rel="icon" href="../img/js.png" sizes="32x32" type="image/png" />
+    <title>Validación con expresiones regulares</title>
+</head>
+ 
+<body>
+    <header>
+        <div class="px-3 py-2 text-bg-dark fixed-top">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="../indexFunciones.html"
+                        class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                        <img src="../img/js.png" alt="" width="32" height="32" class="me-2" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+ 
+    <div class="container-lg">
+        <div class="row">
+            <div class="col-12 shadow-lg p-3 mt-5 bg-body rounded">
+                <h3>Ficha de estudiante</h3>
+                <p class="text-muted">Los campos se validan en tiempo real con expresiones regulares.</p>
+ 
+                <!-- novalidate: la validacion la hacemos nosotros con JavaScript -->
+                <form id="idFormEstudiante" novalidate>
+                    <div class="row g-3">
+                        <div class="col-lg-6">
+                            <label for="idCarnet" class="form-label">Carnet</label>
+                            <input type="text" class="form-control" id="idCarnet" placeholder="AB001" maxlength="5">
+                            <div class="invalid-feedback">Formato: dos letras y tres números. Ejemplo: AB001</div>
+                            <div class="valid-feedback">Carnet válido</div>
+                        </div>
+ 
+                        <div class="col-lg-6">
+                            <label for="idNombreCompleto" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="idNombreCompleto" placeholder="Marcos Alas">
+                            <div class="invalid-feedback">Solo letras y espacios (mínimo nombre y apellido). Sin números ni caracteres especiales.</div>
+                            <div class="valid-feedback">Nombre válido</div>
+                        </div>
+ 
+                        <div class="col-lg-6">
+                            <label for="idDui" class="form-label">DUI</label>
+                            <input type="text" class="form-control" id="idDui" placeholder="01234567-8" maxlength="10">
+                            <div class="invalid-feedback">Formato: ########-# (8 dígitos, guion y 1 dígito)</div>
+                            <div class="valid-feedback">DUI válido</div>
+                        </div>
+ 
+                        <div class="col-lg-6">
+                            <label for="idNit" class="form-label">NIT</label>
+                            <input type="text" class="form-control" id="idNit" placeholder="0614-010190-101-3" maxlength="17">
+                            <div class="invalid-feedback">Formato: ####-######-###-#</div>
+                            <div class="valid-feedback">NIT válido</div>
+                        </div>
+ 
+                        <div class="col-lg-4">
+                            <label for="idFechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                            <input type="text" class="form-control" id="idFechaNacimiento" placeholder="dd/mm/aaaa" maxlength="10">
+                            <div class="invalid-feedback">Formato día/mes/año (dd/mm/aaaa) y debe ser una fecha real que no sea futura.</div>
+                            <div class="valid-feedback">Fecha válida</div>
+                        </div>
+ 
+                        <div class="col-lg-4">
+                            <label for="idCorreo" class="form-label">Correo electrónico</label>
+                            <input type="text" class="form-control" id="idCorreo" placeholder="usuario@correo.com">
+                            <div class="invalid-feedback">Ingrese un correo válido. Ejemplo: usuario@dominio.com</div>
+                            <div class="valid-feedback">Correo válido</div>
+                        </div>
+ 
+                        <div class="col-lg-4">
+                            <label for="idEdad" class="form-label">Edad</label>
+                            <input type="text" class="form-control" id="idEdad" placeholder="20" maxlength="3">
+                            <div class="invalid-feedback">Solo números (entre 1 y 120)</div>
+                            <div class="valid-feedback">Edad válida</div>
+                        </div>
+                    </div>
+ 
+                    <div class="row">
+                        <div class="col-12 pt-4">
+                            <button id="idBtnValidar" type="submit" class="btn btn-success">
+                                <i class="bi bi-check2-circle"></i> Validar ficha
+                            </button>
+                            <button id="idBtnLimpiar" type="button" class="btn btn-danger">
+                                <i class="bi bi-trash"></i> Limpiar formulario
+                            </button>
+                        </div>
+                    </div>
+                </form>
+ 
+                <div id="idResultado" class="mt-4"></div>
+            </div>
+ 
+            <!-- Resumen de las expresiones regulares utilizadas -->
+            <div class="col-12 shadow-lg p-3 mt-5 mb-5 bg-body rounded">
+                <h3>Expresiones regulares utilizadas</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>Campo</th>
+                                <th>Expresión regular</th>
+                                <th>Ejemplo válido</th>
+                            </tr>
+                        </thead>
+                        <tbody id="idTablaRegex"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/validacionEstudiante.js" defer></script>
+</body>
+</html>
+ 
